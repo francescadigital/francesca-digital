@@ -4,10 +4,10 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button-link";
 
 const navigation = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
+  { label: "Work", href: "/#work" },
+  { label: "Services", href: "/#services" },
+  { label: "Process", href: "/#process" },
+  { label: "About", href: "/#about" },
 ] as const;
 
 function Brand() {
@@ -29,7 +29,7 @@ function Brand() {
       </span>
 
       <span className="flex flex-col">
-        <span className="text-[0.6875rem] font-medium leading-none tracking-[0.28em] text-foreground">
+        <span className="text-[0.6875rem] leading-none font-medium tracking-[0.28em] text-foreground">
           FRANCESCA
         </span>
 
@@ -39,7 +39,7 @@ function Brand() {
             className="h-px w-3 bg-accent transition-[width] duration-300 group-hover:w-5"
           />
 
-          <span className="text-[0.5625rem] font-medium leading-none tracking-[0.34em] text-accent">
+          <span className="text-[0.5625rem] leading-none font-medium tracking-[0.34em] text-accent">
             DIGITAL
           </span>
         </span>
@@ -50,16 +50,13 @@ function Brand() {
 
 function DesktopNavigation() {
   return (
-    <nav
-      aria-label="Primary navigation"
-      className="hidden md:block"
-    >
+    <nav aria-label="Primary navigation" className="hidden md:block">
       <ul className="flex items-center gap-8">
         {navigation.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className="relative rounded-sm py-2 text-sm text-muted outline-none transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100 focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
+              className="relative rounded-sm py-2 text-sm text-muted outline-none transition-colors duration-200 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100 focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
             >
               {item.label}
             </Link>
@@ -74,9 +71,7 @@ function MobileNavigation() {
   return (
     <details className="group relative md:hidden">
       <summary className="flex size-10 cursor-pointer list-none items-center justify-center rounded-full border border-border text-foreground outline-none transition-colors duration-200 select-none hover:border-foreground/40 hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent [&::-webkit-details-marker]:hidden">
-        <span className="sr-only">
-          Open navigation menu
-        </span>
+        <span className="sr-only">Open navigation menu</span>
 
         <span
           aria-hidden="true"
@@ -90,7 +85,7 @@ function MobileNavigation() {
 
       <nav
         aria-label="Mobile navigation"
-        className="absolute right-0 top-14 w-[min(18rem,calc(100vw-2.5rem))] rounded-lg border border-border bg-surface p-2 shadow-2xl shadow-black/30"
+        className="absolute top-14 right-0 w-[min(18rem,calc(100vw-2.5rem))] rounded-lg border border-border bg-surface p-2 shadow-2xl shadow-black/30"
       >
         <ul>
           {navigation.map((item) => (
@@ -107,7 +102,7 @@ function MobileNavigation() {
 
         <div className="mt-2 border-t border-border pt-2">
           <Link
-            href="#contact"
+            href="/contact"
             className="flex min-h-12 items-center justify-center rounded-md bg-accent px-4 text-sm font-semibold text-accent-foreground outline-none transition-colors duration-200 hover:bg-accent-hover focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             Start a project
@@ -120,7 +115,10 @@ function MobileNavigation() {
 
 export function SiteHeader() {
   return (
-    <header className="relative z-50 border-b border-border bg-background">
+    <header
+      id="top"
+      className="relative z-50 border-b border-border bg-background"
+    >
       <div className="site-container grid h-20 grid-cols-[1fr_auto] items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
         <Brand />
 
@@ -128,7 +126,7 @@ export function SiteHeader() {
 
         <div className="flex items-center justify-end gap-3">
           <ButtonLink
-            href="#contact"
+            href="/contact"
             variant="secondary"
             size="sm"
             className="hidden font-medium hover:border-accent hover:bg-transparent hover:text-accent sm:inline-flex"
