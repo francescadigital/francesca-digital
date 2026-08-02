@@ -1,5 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
+
+import { ButtonLink } from "@/components/ui/button-link";
+import { SectionLabel } from "@/components/ui/section-label";
 
 const capabilities = [
   {
@@ -18,25 +20,6 @@ const capabilities = [
     description: "Built to perform and evolve.",
   },
 ] as const;
-
-function ArrowUpRightIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      fill="none"
-      className="size-4"
-    >
-      <path
-        d="M4 12L12 4M6 4h6v6"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 function HeroBrandVisual() {
   return (
@@ -68,7 +51,7 @@ function HeroBrandVisual() {
 
       <div className="absolute top-[9%] left-1/2 size-2 -translate-x-1/2 rounded-full bg-accent" />
 
-      <div className="absolute right-[9%] top-1/2 size-2 -translate-y-1/2 rounded-full border border-accent bg-background" />
+      <div className="absolute top-1/2 right-[9%] size-2 -translate-y-1/2 rounded-full border border-accent bg-background" />
 
       <div className="absolute bottom-[9%] left-1/2 size-2 -translate-x-1/2 rounded-full border border-accent bg-background" />
 
@@ -102,16 +85,7 @@ export function HeroSection() {
       <div className="site-container">
         <div className="grid min-h-[calc(100svh-5rem)] items-center gap-16 py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(22rem,0.85fr)] lg:gap-12 lg:py-20">
           <div className="relative z-10">
-            <div className="flex items-center gap-3">
-              <span
-                aria-hidden="true"
-                className="h-px w-8 bg-accent"
-              />
-
-              <p className="font-mono text-[0.6875rem] tracking-[0.18em] text-muted uppercase">
-                Independent digital studio
-              </p>
-            </div>
+            <SectionLabel>Independent digital studio</SectionLabel>
 
             <h1
               id="hero-heading"
@@ -130,27 +104,17 @@ export function HeroSection() {
             </div>
 
             <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <Link
-                href="#contact"
-                className="group inline-flex h-12 items-center justify-center gap-3 rounded-full bg-accent px-6 text-sm font-semibold text-accent-foreground outline-none transition-colors duration-200 hover:bg-accent-hover focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-              >
+              <ButtonLink href="#contact" arrow="up-right">
                 Start a project
+              </ButtonLink>
 
-                <span className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  <ArrowUpRightIcon />
-                </span>
-              </Link>
-
-              <Link
+              <ButtonLink
                 href="#work"
-                className="group inline-flex h-12 items-center justify-center gap-3 rounded-full border border-border px-6 text-sm font-medium text-foreground outline-none transition-colors duration-200 hover:border-foreground/40 hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+                variant="secondary"
+                arrow="right"
               >
                 Selected work
-
-                <span className="text-muted transition-transform duration-200 group-hover:translate-x-0.5">
-                  →
-                </span>
-              </Link>
+              </ButtonLink>
             </div>
           </div>
 
@@ -195,4 +159,3 @@ export function HeroSection() {
     </section>
   );
 }
-

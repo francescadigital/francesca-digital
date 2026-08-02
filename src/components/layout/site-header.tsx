@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ButtonLink } from "@/components/ui/button-link";
+
 const navigation = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
@@ -20,14 +22,14 @@ function Brand() {
           src="/brand/logo-mark.svg"
           alt=""
           fill
-          sizes="36px"
           priority
+          sizes="36px"
           className="transition-transform duration-300 ease-out group-hover:scale-[1.04]"
         />
       </span>
 
       <span className="flex flex-col">
-        <span className="text-[0.6875rem] leading-none font-medium tracking-[0.28em] text-foreground">
+        <span className="text-[0.6875rem] font-medium leading-none tracking-[0.28em] text-foreground">
           FRANCESCA
         </span>
 
@@ -37,7 +39,7 @@ function Brand() {
             className="h-px w-3 bg-accent transition-[width] duration-300 group-hover:w-5"
           />
 
-          <span className="text-[0.5625rem] leading-none font-medium tracking-[0.34em] text-accent">
+          <span className="text-[0.5625rem] font-medium leading-none tracking-[0.34em] text-accent">
             DIGITAL
           </span>
         </span>
@@ -48,13 +50,16 @@ function Brand() {
 
 function DesktopNavigation() {
   return (
-    <nav aria-label="Primary navigation" className="hidden md:block">
+    <nav
+      aria-label="Primary navigation"
+      className="hidden md:block"
+    >
       <ul className="flex items-center gap-8">
         {navigation.map((item) => (
           <li key={item.href}>
             <Link
               href={item.href}
-              className="relative rounded-sm py-2 text-sm text-muted outline-none transition-colors duration-200 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100 focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
+              className="relative rounded-sm py-2 text-sm text-muted outline-none transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100 focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
             >
               {item.label}
             </Link>
@@ -69,20 +74,23 @@ function MobileNavigation() {
   return (
     <details className="group relative md:hidden">
       <summary className="flex size-10 cursor-pointer list-none items-center justify-center rounded-full border border-border text-foreground outline-none transition-colors duration-200 select-none hover:border-foreground/40 hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent [&::-webkit-details-marker]:hidden">
-        <span className="sr-only">Open navigation menu</span>
+        <span className="sr-only">
+          Open navigation menu
+        </span>
 
         <span
           aria-hidden="true"
           className="relative flex size-4 flex-col justify-center gap-1"
         >
           <span className="h-px w-4 bg-current transition-transform duration-200 group-open:translate-y-[2.5px] group-open:rotate-45" />
+
           <span className="h-px w-4 bg-current transition-transform duration-200 group-open:-translate-y-[2.5px] group-open:-rotate-45" />
         </span>
       </summary>
 
       <nav
         aria-label="Mobile navigation"
-        className="absolute top-14 right-0 w-[min(18rem,calc(100vw-2.5rem))] rounded-lg border border-border bg-surface p-2 shadow-2xl shadow-black/30"
+        className="absolute right-0 top-14 w-[min(18rem,calc(100vw-2.5rem))] rounded-lg border border-border bg-surface p-2 shadow-2xl shadow-black/30"
       >
         <ul>
           {navigation.map((item) => (
@@ -119,12 +127,14 @@ export function SiteHeader() {
         <DesktopNavigation />
 
         <div className="flex items-center justify-end gap-3">
-          <Link
+          <ButtonLink
             href="#contact"
-            className="hidden h-10 items-center justify-center rounded-full border border-border px-5 text-sm font-medium text-foreground outline-none transition-colors duration-200 hover:border-accent hover:text-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:inline-flex"
+            variant="secondary"
+            size="sm"
+            className="hidden font-medium hover:border-accent hover:bg-transparent hover:text-accent sm:inline-flex"
           >
             Start a project
-          </Link>
+          </ButtonLink>
 
           <MobileNavigation />
         </div>
