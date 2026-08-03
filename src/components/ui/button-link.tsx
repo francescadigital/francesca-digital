@@ -20,9 +20,9 @@ type ButtonLinkProps = Omit<
 
 const variantClasses: Record<ButtonLinkVariant, string> = {
   primary:
-    "bg-accent text-accent-foreground hover:bg-accent-hover",
+    "border border-accent bg-accent text-accent-foreground shadow-[0_10px_30px_rgba(79,124,255,0.18)] hover:border-accent-hover hover:bg-accent-hover hover:shadow-[0_16px_42px_rgba(79,124,255,0.28)]",
   secondary:
-    "border border-border text-foreground hover:border-foreground/40 hover:bg-surface",
+    "border border-border bg-transparent text-foreground hover:border-accent/45 hover:bg-surface hover:shadow-soft",
 };
 
 const sizeClasses: Record<ButtonLinkSize, string> = {
@@ -79,7 +79,9 @@ export function ButtonLink({
   return (
     <Link
       className={cn(
-        "group inline-flex shrink-0 items-center justify-center gap-3 rounded-full text-sm font-semibold outline-none transition-colors duration-200",
+        "interactive-group relative inline-flex shrink-0 items-center justify-center gap-3 overflow-hidden rounded-full text-sm font-semibold outline-none",
+        "transition-[transform,border-color,background-color,color,box-shadow] duration-300 ease-out",
+        "hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.985]",
         "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background",
         variantClasses[variant],
         sizeClasses[size],
@@ -87,15 +89,26 @@ export function ButtonLink({
       )}
       {...linkProps}
     >
-      {children}
+      <span
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300",
+          variant === "primary"
+            ? "bg-[linear-gradient(110deg,transparent_20%,rgba(255,255,255,0.16)_50%,transparent_80%)] group-hover:opacity-100"
+            : "bg-gradient-to-r from-transparent via-white/[0.035] to-transparent group-hover:opacity-100",
+        )}
+      />
+
+      <span className="relative z-10">{children}</span>
 
       {arrow ? (
         <span
+          aria-hidden="true"
           className={cn(
-            "transition-transform duration-200",
+            "interactive-arrow relative z-10 flex items-center justify-center",
             arrow === "up-right"
-              ? "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              : "group-hover:translate-x-0.5",
+              ? "group-hover:translate-x-[0.1875rem] group-hover:-translate-y-[0.1875rem]"
+              : "group-hover:translate-x-1",
           )}
         >
           <ArrowIcon direction={arrow} />

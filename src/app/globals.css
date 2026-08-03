@@ -22,6 +22,16 @@
 
   --transition-fast: 160ms;
   --transition-base: 240ms;
+  --transition-slow: 420ms;
+
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-soft: 0 12px 36px rgba(0, 0, 0, 0.18);
+  --shadow-large: 0 24px 64px rgba(0, 0, 0, 0.28);
+  --shadow-interactive: 0 28px 80px rgba(0, 0, 0, 0.3);
+
+  --focus-ring: 0 0 0 2px var(--accent);
 }
 
 @theme inline {
@@ -44,6 +54,9 @@
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
 
+  --shadow-soft: var(--shadow-soft);
+  --shadow-large: var(--shadow-large);
+
   --breakpoint-xs: 30rem;
 }
 
@@ -62,11 +75,13 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
+  overflow-x: clip;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -94,6 +109,11 @@ canvas {
   max-width: 100%;
 }
 
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
 ::selection {
   background: var(--accent);
   color: var(--accent-foreground);
@@ -109,6 +129,69 @@ canvas {
 
 .section-spacing {
   padding-block: 6rem;
+}
+
+.motion-safe {
+  transition:
+    transform var(--transition-base) var(--ease-standard),
+    opacity var(--transition-base) var(--ease-standard),
+    border-color var(--transition-fast) var(--ease-standard),
+    background-color var(--transition-fast) var(--ease-standard),
+    color var(--transition-fast) var(--ease-standard),
+    box-shadow var(--transition-base) var(--ease-standard);
+}
+
+.interactive-surface {
+  transition:
+    transform var(--transition-base) var(--ease-standard),
+    border-color var(--transition-base) var(--ease-standard),
+    background-color var(--transition-base) var(--ease-standard),
+    box-shadow var(--transition-slow) var(--ease-emphasized);
+  will-change: transform;
+}
+
+.interactive-surface:hover {
+  transform: translateY(-0.25rem);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  box-shadow: var(--shadow-interactive);
+}
+
+.interactive-arrow {
+  transition:
+    transform var(--transition-base) var(--ease-standard),
+    color var(--transition-fast) var(--ease-standard),
+    border-color var(--transition-fast) var(--ease-standard),
+    background-color var(--transition-fast) var(--ease-standard);
+}
+
+.interactive-group:hover .interactive-arrow {
+  transform: translateX(0.25rem);
+}
+
+.interactive-line {
+  transform-origin: left center;
+  transition:
+    width var(--transition-slow) var(--ease-emphasized),
+    transform var(--transition-slow) var(--ease-emphasized),
+    background-color var(--transition-fast) var(--ease-standard);
+}
+
+.interactive-glow {
+  transition:
+    opacity var(--transition-slow) var(--ease-emphasized),
+    transform var(--transition-slow) var(--ease-emphasized);
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.25rem);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+.hover-shadow:hover {
+  box-shadow: var(--shadow-large);
 }
 
 @media (min-width: 48rem) {
@@ -131,6 +214,23 @@ canvas {
   }
 }
 
+@media (hover: none) {
+  .interactive-surface:hover,
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none;
+  }
+
+  .interactive-surface:hover {
+    border-color: var(--border);
+    box-shadow: none;
+  }
+
+  .interactive-group:hover .interactive-arrow {
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -143,5 +243,19 @@ canvas {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .interactive-surface,
+  .interactive-arrow,
+  .interactive-line,
+  .interactive-glow {
+    will-change: auto;
+  }
+
+  .interactive-surface:hover,
+  .interactive-group:hover .interactive-arrow,
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none;
   }
 }
