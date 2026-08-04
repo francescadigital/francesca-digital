@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { JsonLd } from "@/components/seo/json-ld";
+import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { seoConfig } from "@/lib/seo";
 
 import "./globals.css";
 
@@ -19,16 +22,51 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(seoConfig.siteUrl),
+
   title: {
-    default: "Francesca Digital",
-    template: "%s | Francesca Digital",
+    default: seoConfig.defaultTitle,
+    template: `%s | ${seoConfig.siteName}`,
   },
-  description:
-    "Francesca Digital creates clear, precise and high-performing digital experiences.",
-  applicationName: "Francesca Digital",
-  authors: [{ name: "Francesca Digital" }],
-  creator: "Francesca Digital",
-  publisher: "Francesca Digital",
+
+  description: seoConfig.description,
+  applicationName: seoConfig.siteName,
+
+  authors: [
+    {
+      name: seoConfig.creator,
+    },
+  ],
+
+  creator: seoConfig.creator,
+  publisher: seoConfig.creator,
+  category: seoConfig.category,
+  keywords: [...seoConfig.keywords],
+
+  alternates: {
+    canonical: "/",
+  },
+
+  openGraph: {
+    title: seoConfig.defaultTitle,
+    description: seoConfig.description,
+    url: "/",
+    siteName: seoConfig.siteName,
+    locale: seoConfig.locale,
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: seoConfig.defaultTitle,
+    description: seoConfig.description,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   formatDetection: {
     email: false,
     address: false,
@@ -43,15 +81,27 @@ type RootLayoutProps = Readonly<{
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
-      lang="en"
+      lang={seoConfig.language}
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body className="bg-background text-foreground">
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
+
+        <a
+          href="#main-content"
+          className="bg-accent text-accent-foreground shadow-large fixed top-4 left-4 z-[100] -translate-y-24 rounded-md px-4 py-3 text-sm font-semibold transition-transform duration-200 focus:translate-y-0"
+        >
+          Skip to content
+        </a>
+
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
 
-          <div className="flex-1">{children}</div>
+          <div id="main-content" tabIndex={-1} className="flex-1 outline-none">
+            {children}
+          </div>
 
           <SiteFooter />
         </div>
