@@ -51,12 +51,7 @@ function ArrowIcon({ direction }: { direction: ButtonLinkArrow }) {
   }
 
   return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      fill="none"
-      className="size-4"
-    >
+    <svg aria-hidden="true" viewBox="0 0 16 16" fill="none" className="size-4">
       <path
         d="M4 12 12 4M6 4h6v6"
         stroke="currentColor"
@@ -82,7 +77,7 @@ export function ButtonLink({
         "interactive-group relative inline-flex shrink-0 items-center justify-center gap-3 overflow-hidden rounded-full text-sm font-semibold outline-none",
         "transition-[transform,border-color,background-color,color,box-shadow] duration-300 ease-out",
         "hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.985]",
-        "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background",
+        "focus-visible:ring-accent focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-4",
         variantClasses[variant],
         sizeClasses[size],
         className,

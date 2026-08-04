@@ -1,8 +1,4 @@
-import {
-  Reveal,
-  Stagger,
-  StaggerItem,
-} from "@/components/motion";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { ProjectCard } from "@/components/cards/project-card";
 import { ButtonLink } from "@/components/ui/button-link";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -15,7 +11,7 @@ export function SelectedWorkSection() {
     <section
       id="work"
       aria-labelledby="selected-work-heading"
-      className="section-spacing relative overflow-hidden border-b border-border"
+      className="section-spacing border-border relative overflow-hidden border-b"
     >
       <div className="site-container">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
@@ -31,16 +27,8 @@ export function SelectedWorkSection() {
             />
           </Reveal>
 
-          <Reveal
-            variant="left"
-            delay={0.1}
-            className="w-fit lg:mb-1"
-          >
-            <ButtonLink
-              href="/work"
-              variant="secondary"
-              arrow="right"
-            >
+          <Reveal variant="left" delay={0.1} className="w-fit lg:mb-1">
+            <ButtonLink href="/work" variant="secondary" arrow="right">
               View all projects
             </ButtonLink>
           </Reveal>
@@ -51,31 +39,20 @@ export function SelectedWorkSection() {
           className="mt-16 grid items-stretch gap-6 lg:mt-20 lg:grid-cols-2 lg:gap-8"
         >
           {featuredProjects.map((project, index) => (
-            <StaggerItem
-              key={project.slug}
-              className="h-full"
-            >
+            <StaggerItem key={project.slug} className="h-full">
               <div
                 className={
-                  index % 2 === 1
-                    ? "h-full lg:translate-y-12"
-                    : "h-full"
+                  index % 2 === 1 ? "h-full lg:translate-y-12" : "h-full"
                 }
               >
-                <ProjectCard
-                  project={project}
-                  priority={index === 0}
-                />
+                <ProjectCard project={project} priority={index === 0} />
               </div>
             </StaggerItem>
           ))}
         </Stagger>
 
-        <Reveal
-          delay={0.1}
-          className="mt-20 lg:mt-32"
-        >
-          <div className="flex flex-col gap-5 border-t border-border pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+        <Reveal delay={0.1} className="mt-20 lg:mt-32">
+          <div className="border-border text-muted flex flex-col gap-5 border-t pt-8 text-sm sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-xl leading-6">
               Each engagement is shaped around the product, audience and
               business context rather than a fixed visual formula.
@@ -90,7 +67,7 @@ export function SelectedWorkSection() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-[28%] left-[-18rem] -z-10 size-[38rem] rounded-full bg-accent/[0.035] blur-[160px]"
+        className="bg-accent/[0.035] pointer-events-none absolute top-[28%] left-[-18rem] -z-10 size-[38rem] rounded-full blur-[160px]"
       />
     </section>
   );

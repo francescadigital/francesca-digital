@@ -1,8 +1,5 @@
 export type PrincipleId =
-  | "precision"
-  | "clarity"
-  | "performance"
-  | "long-term-thinking";
+  "precision" | "clarity" | "performance" | "long-term-thinking";
 
 export type Principle = {
   id: PrincipleId;

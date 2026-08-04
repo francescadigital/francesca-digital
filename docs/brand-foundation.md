@@ -1,4 +1,3 @@
-
 # Brand Foundation
 
 > Strategic foundation of the Francesca Digital brand.

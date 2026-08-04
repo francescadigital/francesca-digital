@@ -1,8 +1,4 @@
-export type ProcessStepId =
-  | "understand"
-  | "define"
-  | "build"
-  | "refine";
+export type ProcessStepId = "understand" | "define" | "build" | "refine";
 
 export type ProcessStep = {
   id: ProcessStepId;

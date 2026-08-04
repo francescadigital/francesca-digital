@@ -21,18 +21,14 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={cn(className)}>
-      {eyebrow ? (
-        <SectionLabel className="mb-6">
-          {eyebrow}
-        </SectionLabel>
-      ) : null}
+      {eyebrow ? <SectionLabel className="mb-6">{eyebrow}</SectionLabel> : null}
 
-      <Heading className="max-w-4xl text-4xl font-medium tracking-[-0.04em] text-foreground sm:text-5xl lg:text-6xl">
+      <Heading className="text-foreground max-w-4xl text-4xl font-medium tracking-[-0.04em] sm:text-5xl lg:text-6xl">
         {title}
       </Heading>
 
       {description ? (
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
+        <p className="text-muted mt-6 max-w-2xl text-lg leading-8">
           {description}
         </p>
       ) : null}

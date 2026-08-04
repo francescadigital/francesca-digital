@@ -1,7 +1,4 @@
-export type ServiceId =
-  | "strategy"
-  | "design"
-  | "development";
+export type ServiceId = "strategy" | "design" | "development";
 
 export type Service = {
   id: ServiceId;

@@ -15,13 +15,7 @@ import {
 } from "@/lib/motion";
 import { cn } from "@/lib/cn";
 
-type RevealVariant =
-  | "fade"
-  | "up"
-  | "down"
-  | "left"
-  | "right"
-  | "scale";
+type RevealVariant = "fade" | "up" | "down" | "left" | "right" | "scale";
 
 type RevealElement =
   | "div"

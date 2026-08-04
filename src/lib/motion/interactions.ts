@@ -1,7 +1,4 @@
-import type {
-  TargetAndTransition,
-  Transition,
-} from "motion/react";
+import type { TargetAndTransition, Transition } from "motion/react";
 
 import { motionEase } from "./transitions";
 

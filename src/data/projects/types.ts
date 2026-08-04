@@ -1,12 +1,7 @@
 export type ProjectCategory =
-  | "Web Design"
-  | "Web Development"
-  | "Brand Identity";
+  "Web Design" | "Web Development" | "Brand Identity";
 
-export type ProjectPreview =
-  | "grid"
-  | "editorial"
-  | "geometry";
+export type ProjectPreview = "grid" | "editorial" | "geometry";
 
 export type Project = {
   slug: string;

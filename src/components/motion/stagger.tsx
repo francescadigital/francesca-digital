@@ -22,11 +22,7 @@ type StaggerItemProps = {
   className?: string;
 };
 
-export function Stagger({
-  children,
-  className,
-  slow = false,
-}: StaggerProps) {
+export function Stagger({ children, className, slow = false }: StaggerProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -34,11 +30,7 @@ export function Stagger({
       initial={shouldReduceMotion ? false : "hidden"}
       whileInView={shouldReduceMotion ? undefined : "visible"}
       viewport={revealViewport}
-      variants={
-        slow
-          ? slowStaggerContainerVariants
-          : staggerContainerVariants
-      }
+      variants={slow ? slowStaggerContainerVariants : staggerContainerVariants}
       className={cn(className)}
     >
       {children}
@@ -46,15 +38,9 @@ export function Stagger({
   );
 }
 
-export function StaggerItem({
-  children,
-  className,
-}: StaggerItemProps) {
+export function StaggerItem({ children, className }: StaggerItemProps) {
   return (
-    <motion.div
-      variants={fadeUpVariants}
-      className={cn(className)}
-    >
+    <motion.div variants={fadeUpVariants} className={cn(className)}>
       {children}
     </motion.div>
   );
