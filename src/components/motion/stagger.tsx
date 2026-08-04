@@ -3,13 +3,12 @@
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
 
+import { cn } from "@/lib/cn";
 import {
   fadeUpVariants,
-  revealViewport,
   slowStaggerContainerVariants,
   staggerContainerVariants,
 } from "@/lib/motion";
-import { cn } from "@/lib/cn";
 
 type StaggerProps = {
   children: ReactNode;
@@ -22,6 +21,12 @@ type StaggerItemProps = {
   className?: string;
 };
 
+const staggerViewport = {
+  once: true,
+  amount: 0.05,
+  margin: "0px 0px -5% 0px",
+} as const;
+
 export function Stagger({ children, className, slow = false }: StaggerProps) {
   const shouldReduceMotion = useReducedMotion();
 
@@ -29,7 +34,7 @@ export function Stagger({ children, className, slow = false }: StaggerProps) {
     <motion.div
       initial={shouldReduceMotion ? false : "hidden"}
       whileInView={shouldReduceMotion ? undefined : "visible"}
-      viewport={revealViewport}
+      viewport={staggerViewport}
       variants={slow ? slowStaggerContainerVariants : staggerContainerVariants}
       className={cn(className)}
     >

@@ -1,9 +1,13 @@
-export type ServiceId = "strategy" | "design" | "development";
+export type ServiceId =
+  "website" | "landing-page" | "redesign" | "technical-improvement";
 
 export type Service = {
   id: ServiceId;
   number: string;
   title: string;
-  description: string;
+  audience: string;
+  problem: string;
+  approach: string;
+  outcome: string;
   deliverables: readonly string[];
 };
