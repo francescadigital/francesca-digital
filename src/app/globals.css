@@ -120,25 +120,12 @@ canvas {
 }
 
 .site-container {
-  width: min(
-    calc(100% - (var(--page-padding) * 2)),
-    var(--container-width)
-  );
+  width: min(calc(100% - (var(--page-padding) * 2)), var(--container-width));
   margin-inline: auto;
 }
 
 .section-spacing {
   padding-block: 6rem;
-}
-
-.motion-safe {
-  transition:
-    transform var(--transition-base) var(--ease-standard),
-    opacity var(--transition-base) var(--ease-standard),
-    border-color var(--transition-fast) var(--ease-standard),
-    background-color var(--transition-fast) var(--ease-standard),
-    color var(--transition-fast) var(--ease-standard),
-    box-shadow var(--transition-base) var(--ease-standard);
 }
 
 .interactive-surface {
@@ -168,28 +155,6 @@ canvas {
   transform: translateX(0.25rem);
 }
 
-.interactive-line {
-  transform-origin: left center;
-  transition:
-    width var(--transition-slow) var(--ease-emphasized),
-    transform var(--transition-slow) var(--ease-emphasized),
-    background-color var(--transition-fast) var(--ease-standard);
-}
-
-.interactive-glow {
-  transition:
-    opacity var(--transition-slow) var(--ease-emphasized),
-    transform var(--transition-slow) var(--ease-emphasized);
-}
-
-.hover-lift:hover {
-  transform: translateY(-0.25rem);
-}
-
-.hover-scale:hover {
-  transform: scale(1.02);
-}
-
 .hover-shadow:hover {
   box-shadow: var(--shadow-large);
 }
@@ -215,13 +180,8 @@ canvas {
 }
 
 @media (hover: none) {
-  .interactive-surface:hover,
-  .hover-lift:hover,
-  .hover-scale:hover {
-    transform: none;
-  }
-
   .interactive-surface:hover {
+    transform: none;
     border-color: var(--border);
     box-shadow: none;
   }
@@ -239,23 +199,18 @@ canvas {
   *,
   *::before,
   *::after {
-    scroll-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 
   .interactive-surface,
-  .interactive-arrow,
-  .interactive-line,
-  .interactive-glow {
+  .interactive-arrow {
     will-change: auto;
   }
 
   .interactive-surface:hover,
-  .interactive-group:hover .interactive-arrow,
-  .hover-lift:hover,
-  .hover-scale:hover {
+  .interactive-group:hover .interactive-arrow {
     transform: none;
   }
 }

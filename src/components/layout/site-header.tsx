@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { MobileNavigation } from "@/components/layout/mobile-navigation";
 import { ButtonLink } from "@/components/ui/button-link";
 
 const navigation = [
@@ -15,7 +16,7 @@ function Brand() {
     <Link
       href="/"
       aria-label="Francesca Digital home"
-      className="group inline-flex shrink-0 items-center gap-3 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+      className="group focus-visible:ring-accent focus-visible:ring-offset-background inline-flex shrink-0 items-center gap-3 rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-offset-4"
     >
       <span className="relative size-9 shrink-0">
         <Image
@@ -24,22 +25,22 @@ function Brand() {
           fill
           priority
           sizes="36px"
-          className="transition-transform duration-300 ease-out group-hover:scale-[1.04]"
+          className="object-contain transition-transform duration-300 ease-out group-hover:scale-[1.04]"
         />
       </span>
 
       <span className="flex flex-col">
-        <span className="text-[0.6875rem] leading-none font-medium tracking-[0.28em] text-foreground">
+        <span className="text-foreground text-[0.6875rem] leading-none font-medium tracking-[0.28em]">
           FRANCESCA
         </span>
 
         <span className="mt-1.5 flex items-center gap-2">
           <span
             aria-hidden="true"
-            className="h-px w-3 bg-accent transition-[width] duration-300 group-hover:w-5"
+            className="bg-accent h-px w-3 transition-[width] duration-300 group-hover:w-5"
           />
 
-          <span className="text-[0.5625rem] leading-none font-medium tracking-[0.34em] text-accent">
+          <span className="text-accent text-[0.5625rem] leading-none font-medium tracking-[0.34em]">
             DIGITAL
           </span>
         </span>
@@ -56,7 +57,7 @@ function DesktopNavigation() {
           <li key={item.href}>
             <Link
               href={item.href}
-              className="relative rounded-sm py-2 text-sm text-muted outline-none transition-colors duration-200 after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-200 hover:text-foreground hover:after:scale-x-100 focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-accent"
+              className="text-muted after:bg-accent hover:text-foreground focus-visible:text-foreground focus-visible:ring-accent relative rounded-sm py-2 text-sm transition-colors duration-200 outline-none after:absolute after:right-0 after:bottom-0 after:left-0 after:h-px after:origin-left after:scale-x-0 after:transition-transform after:duration-200 hover:after:scale-x-100 focus-visible:ring-2"
             >
               {item.label}
             </Link>
@@ -67,57 +68,11 @@ function DesktopNavigation() {
   );
 }
 
-function MobileNavigation() {
-  return (
-    <details className="group relative md:hidden">
-      <summary className="flex size-10 cursor-pointer list-none items-center justify-center rounded-full border border-border text-foreground outline-none transition-colors duration-200 select-none hover:border-foreground/40 hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent [&::-webkit-details-marker]:hidden">
-        <span className="sr-only">Open navigation menu</span>
-
-        <span
-          aria-hidden="true"
-          className="relative flex size-4 flex-col justify-center gap-1"
-        >
-          <span className="h-px w-4 bg-current transition-transform duration-200 group-open:translate-y-[2.5px] group-open:rotate-45" />
-
-          <span className="h-px w-4 bg-current transition-transform duration-200 group-open:-translate-y-[2.5px] group-open:-rotate-45" />
-        </span>
-      </summary>
-
-      <nav
-        aria-label="Mobile navigation"
-        className="absolute top-14 right-0 w-[min(18rem,calc(100vw-2.5rem))] rounded-lg border border-border bg-surface p-2 shadow-2xl shadow-black/30"
-      >
-        <ul>
-          {navigation.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="flex min-h-12 items-center rounded-md px-4 text-sm text-muted outline-none transition-colors duration-200 hover:bg-card hover:text-foreground focus-visible:bg-card focus-visible:text-foreground focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-2 border-t border-border pt-2">
-          <Link
-            href="/contact"
-            className="flex min-h-12 items-center justify-center rounded-md bg-accent px-4 text-sm font-semibold text-accent-foreground outline-none transition-colors duration-200 hover:bg-accent-hover focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-          >
-            Start a project
-          </Link>
-        </div>
-      </nav>
-    </details>
-  );
-}
-
 export function SiteHeader() {
   return (
     <header
       id="top"
-      className="relative z-50 border-b border-border bg-background"
+      className="border-border bg-background relative z-50 border-b"
     >
       <div className="site-container grid h-20 grid-cols-[1fr_auto] items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
         <Brand />
@@ -129,7 +84,7 @@ export function SiteHeader() {
             href="/contact"
             variant="secondary"
             size="sm"
-            className="hidden font-medium hover:border-accent hover:bg-transparent hover:text-accent sm:inline-flex"
+            className="hover:border-accent hover:text-accent hidden font-medium hover:bg-transparent sm:inline-flex"
           >
             Start a project
           </ButtonLink>
