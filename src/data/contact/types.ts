@@ -5,4 +5,5 @@ export type ContactDetails = {
   email: string;
   availability: string;
   location: string;
+  responseTime: string;
 };
