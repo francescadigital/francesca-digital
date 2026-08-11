@@ -91,7 +91,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         <a
           href="#main-content"
-          className="bg-accent text-accent-foreground shadow-large fixed top-4 left-4 z-[100] -translate-y-24 rounded-md px-4 py-3 text-sm font-semibold transition-transform duration-200 focus:translate-y-0"
+          className="bg-accent-solid text-accent-foreground shadow-large fixed top-4 left-4 z-[100] -translate-y-24 rounded-md px-4 py-3 text-sm font-semibold transition-transform duration-200 focus:translate-y-0"
         >
           Skip to content
         </a>

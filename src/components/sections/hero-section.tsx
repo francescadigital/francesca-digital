@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { Container } from "@/components/layout/container";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion";
 import { ButtonLink } from "@/components/ui/button-link";
 import { SectionLabel } from "@/components/ui/section-label";
 
@@ -162,89 +161,79 @@ export function HeroSection() {
       <Container>
         <div className="grid min-h-[calc(100svh-5rem)] items-center gap-16 py-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.92fr)] lg:gap-14 lg:py-20">
           <div className="relative z-10">
-            <Reveal delay={0.04}>
-              <SectionLabel>Independent digital studio</SectionLabel>
-            </Reveal>
+            <SectionLabel>Independent digital studio</SectionLabel>
 
-            <Reveal delay={0.1}>
-              <h1
-                id="hero-heading"
-                className="text-foreground mt-8 max-w-4xl text-[clamp(3.5rem,7.4vw,7.25rem)] leading-[0.88] font-medium tracking-[-0.075em]"
-              >
-                <span className="block">Digital products</span>
-
-                <span className="text-muted block">built with intent.</span>
-              </h1>
-            </Reveal>
-
-            <Reveal delay={0.16}>
-              <div className="border-border mt-10 max-w-2xl border-l pl-5 sm:mt-12 sm:pl-6">
-                <p className="text-muted text-lg leading-8 sm:text-xl">
-                  Francesca Digital designs and develops thoughtful websites for
-                  businesses that value clarity, performance and long-term
-                  quality.
-                </p>
-
-                <p className="text-muted mt-4 text-base leading-7">
-                  Strategy, design and engineering work as one focused system
-                  from the first decision to the final release.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.22}>
-              <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <ButtonLink
-                  href="/contact"
-                  arrow="up-right"
-                  className="w-full sm:w-auto"
-                >
-                  Start a project
-                </ButtonLink>
-
-                <ButtonLink
-                  href="/#work"
-                  variant="secondary"
-                  arrow="right"
-                  className="w-full sm:w-auto"
-                >
-                  View selected work
-                </ButtonLink>
-              </div>
-            </Reveal>
-
-            <Stagger
-              slow
-              className="border-border mt-12 grid border-t sm:grid-cols-3"
+            <h1
+              id="hero-heading"
+              className="text-foreground mt-8 max-w-4xl text-[clamp(3.5rem,7.4vw,7.25rem)] leading-[0.88] font-medium tracking-[-0.075em]"
             >
+              <span className="block">Digital products</span>
+
+              <span className="text-muted block">built with intent.</span>
+            </h1>
+
+            <div className="border-border mt-10 max-w-2xl border-l pl-5 sm:mt-12 sm:pl-6">
+              <p className="text-muted text-lg leading-8 sm:text-xl">
+                Francesca Digital designs and develops thoughtful websites for
+                businesses that value clarity, performance and long-term
+                quality.
+              </p>
+
+              <p className="text-muted mt-4 text-base leading-7">
+                Strategy, design and engineering work as one focused system from
+                the first decision to the final release.
+              </p>
+            </div>
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <ButtonLink
+                href="/contact"
+                arrow="up-right"
+                className="w-full sm:w-auto"
+              >
+                Start a project
+              </ButtonLink>
+
+              <ButtonLink
+                href="/#work"
+                variant="secondary"
+                arrow="right"
+                className="w-full sm:w-auto"
+              >
+                View selected work
+              </ButtonLink>
+            </div>
+
+            <div className="border-border mt-12 grid border-t sm:grid-cols-3">
               {trustSignals.map((signal) => (
-                <StaggerItem key={signal.number} className="h-full">
-                  <article className="group/signal border-border relative h-full border-b py-6 last:border-b-0 sm:border-r sm:border-b-0 sm:px-6 sm:first:pl-0 sm:last:border-r-0 sm:last:pr-0">
-                    <div
-                      aria-hidden="true"
-                      className="bg-accent absolute top-0 left-0 h-px w-0 transition-[width] duration-500 ease-out group-hover/signal:w-full"
-                    />
+                <article
+                  key={signal.number}
+                  className="group/signal border-border relative h-full border-b py-6 last:border-b-0 sm:border-r sm:border-b-0 sm:px-6 sm:first:pl-0 sm:last:border-r-0 sm:last:pr-0"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="bg-accent absolute top-0 left-0 h-px w-0 transition-[width] duration-500 ease-out group-hover/signal:w-full"
+                  />
 
-                    <p className="text-accent font-mono text-[0.5625rem] tracking-[0.16em]">
-                      {signal.number}
-                    </p>
+                  <p className="text-accent font-mono text-[0.5625rem] tracking-[0.16em]">
+                    {signal.number}
+                  </p>
 
-                    <h2 className="text-foreground mt-4 text-sm font-medium">
-                      {signal.title}
-                    </h2>
+                  <h2 className="text-foreground mt-4 text-sm font-medium">
+                    {signal.title}
+                  </h2>
 
-                    <p className="text-muted mt-2 text-xs leading-5">
-                      {signal.description}
-                    </p>
-                  </article>
-                </StaggerItem>
+                  <p className="text-muted mt-2 text-xs leading-5">
+                    {signal.description}
+                  </p>
+                </article>
               ))}
-            </Stagger>
+            </div>
           </div>
 
-          <Reveal variant="scale" delay={0.2} className="w-full">
+          <div className="w-full">
             <BlueprintPanel />
-          </Reveal>
+          </div>
         </div>
       </Container>
 

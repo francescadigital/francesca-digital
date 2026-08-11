@@ -1,14 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef } from "react";
 
 import { cn } from "@/lib/cn";
-import {
-  fadeUpVariants,
-  slowStaggerContainerVariants,
-  staggerContainerVariants,
-} from "@/lib/motion";
 
 type StaggerProps = {
   children: ReactNode;
@@ -21,32 +16,58 @@ type StaggerItemProps = {
   className?: string;
 };
 
-const staggerViewport = {
-  once: true,
-  amount: 0.05,
-  margin: "0px 0px -5% 0px",
-} as const;
-
 export function Stagger({ children, className, slow = false }: StaggerProps) {
-  const shouldReduceMotion = useReducedMotion();
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = elementRef.current;
+
+    if (!element) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) {
+      element.dataset.visible = "true";
+
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        element.dataset.visible = "true";
+        observer.unobserve(element);
+      },
+      {
+        threshold: 0.05,
+        rootMargin: "0px 0px -5% 0px",
+      },
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <motion.div
-      initial={shouldReduceMotion ? false : "hidden"}
-      whileInView={shouldReduceMotion ? undefined : "visible"}
-      viewport={staggerViewport}
-      variants={slow ? slowStaggerContainerVariants : staggerContainerVariants}
-      className={cn(className)}
+    <div
+      ref={elementRef}
+      className={cn("stagger", slow && "stagger-slow", className)}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
 export function StaggerItem({ children, className }: StaggerItemProps) {
-  return (
-    <motion.div variants={fadeUpVariants} className={cn(className)}>
-      {children}
-    </motion.div>
-  );
+  return <div className={cn("stagger-item", className)}>{children}</div>;
 }

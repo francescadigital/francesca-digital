@@ -84,7 +84,7 @@ export default function ContactPage() {
             <div className="mt-10">
               <Link
                 href={`mailto:${contactDetails.email}`}
-                className="bg-accent text-accent-foreground hover:bg-accent-hover focus-visible:ring-accent focus-visible:ring-offset-background inline-flex min-h-12 items-center rounded-full px-6 text-sm font-semibold transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-offset-4"
+                className="bg-accent-solid text-accent-foreground hover:bg-accent-solid-hover focus-visible:ring-accent focus-visible:ring-offset-background inline-flex min-h-12 items-center rounded-full px-6 text-sm font-semibold transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-offset-4"
               >
                 Email Francesca Digital
               </Link>

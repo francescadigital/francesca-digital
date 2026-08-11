@@ -20,7 +20,7 @@ type ButtonLinkProps = Omit<
 
 const variantClasses: Record<ButtonLinkVariant, string> = {
   primary:
-    "border border-accent bg-accent text-accent-foreground shadow-[0_10px_30px_rgba(79,124,255,0.18)] hover:border-accent-hover hover:bg-accent-hover hover:shadow-[0_16px_42px_rgba(79,124,255,0.28)]",
+    "border border-accent-solid bg-accent-solid text-accent-foreground shadow-[0_10px_30px_rgba(63,102,217,0.18)] hover:border-accent-solid-hover hover:bg-accent-solid-hover hover:shadow-[0_16px_42px_rgba(63,102,217,0.28)]",
   secondary:
     "border border-border bg-transparent text-foreground hover:border-accent/45 hover:bg-surface hover:shadow-soft",
 };

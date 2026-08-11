@@ -135,7 +135,7 @@ export function MobileNavigation() {
               href="/contact"
               aria-current={pathname === "/contact" ? "page" : undefined}
               onClick={closeNavigation}
-              className="bg-accent text-accent-foreground hover:bg-accent-hover focus-visible:ring-accent focus-visible:ring-offset-surface flex min-h-12 items-center justify-center rounded-md px-4 text-sm font-semibold transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+              className="bg-accent-solid text-accent-foreground hover:bg-accent-solid-hover focus-visible:ring-accent focus-visible:ring-offset-surface flex min-h-12 items-center justify-center rounded-md px-4 text-sm font-semibold transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             >
               Start a project
             </Link>
