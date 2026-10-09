@@ -156,8 +156,21 @@ export function HeroSection() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="border-border relative overflow-hidden border-b"
+      className="border-border relative overflow-hidden border-b bg-[#0c0c14]"
     >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{ background: "var(--gradient-mesh)" }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -top-[20%] -right-[10%] h-[640px] w-[640px] animate-[meshDrift_20s_ease-in-out_infinite] rounded-full bg-[#7a6cc4]/[0.15] blur-[120px]"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-[15%] -left-[5%] h-[480px] w-[480px] animate-[meshDrift_24s_ease-in-out_infinite_reverse] rounded-full bg-[#5a4e9c]/[0.12] blur-[100px]"
+      />
       <Container>
         <div className="grid min-h-[calc(100svh-5rem)] items-center gap-16 py-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.92fr)] lg:gap-14 lg:py-20">
           <div className="relative z-10">
@@ -165,11 +178,13 @@ export function HeroSection() {
 
             <h1
               id="hero-heading"
-              className="text-foreground mt-8 max-w-4xl text-[clamp(3.5rem,7.4vw,7.25rem)] leading-[0.88] font-medium tracking-[-0.075em]"
+              className="text-foreground mt-8 max-w-4xl text-[clamp(3.5rem,7.4vw,7.25rem)] leading-[0.9] font-medium tracking-[-0.075em]"
             >
               <span className="block">Digital products</span>
 
-              <span className="text-muted block">built with intent.</span>
+              <span className="block bg-gradient-to-r from-[var(--accent)] via-[#958ab5] to-[#c2bbd8] bg-clip-text text-transparent">
+                built with intent.
+              </span>
             </h1>
 
             <div className="border-border mt-10 max-w-2xl border-l pl-5 sm:mt-12 sm:pl-6">
@@ -195,12 +210,12 @@ export function HeroSection() {
               </ButtonLink>
 
               <ButtonLink
-                href="/#work"
+                href="/#about"
                 variant="secondary"
                 arrow="right"
                 className="w-full sm:w-auto"
               >
-                View selected work
+                Our approach
               </ButtonLink>
             </div>
 

@@ -46,6 +46,14 @@ next-env.d.ts
 # Vercel
 .vercel/
 
+# Internal audit / AI-office documentation (not for public deploy)
+AI-OFFICE.md
+CLAUDE.md
+.agents/
+.ai-office/
+.claude/
+docs/audit/
+
 # Temporary files
 *.tmp
 *.swp

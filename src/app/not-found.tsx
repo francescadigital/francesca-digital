@@ -26,12 +26,12 @@ export default function NotFound() {
               </ButtonLink>
 
               <ButtonLink
-                href="/work"
+                href="/#about"
                 variant="secondary"
                 arrow="right"
                 className="w-full sm:w-auto"
               >
-                View work
+                Our approach
               </ButtonLink>
             </div>
           </div>

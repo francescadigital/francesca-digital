@@ -4,7 +4,6 @@ import Link from "next/link";
 import { contactDetails } from "@/data/contact";
 
 const footerNavigation = [
-  { label: "Work", href: "/#work" },
   { label: "Services", href: "/#services" },
   { label: "Process", href: "/#process" },
   { label: "About", href: "/#about" },
