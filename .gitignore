@@ -58,3 +58,4 @@ docs/audit/
 *.tmp
 *.swp
 *~
+.vercel
